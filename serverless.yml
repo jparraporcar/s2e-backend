@@ -1,0 +1,39 @@
+service: s2e-backend
+frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs16.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ap-northeast-1'}
+
+functions:
+  indexCourse:
+    memorySize: 4096
+    timeout: 30
+    handler: src/api.indexCourse
+    events:
+      - http:
+          path: /indexCourse
+          method: GET
+          cors: true
+
+  courseSectionQuiz:
+    memorySize: 4096
+    timeout: 30
+    handler: src/api.courseSectionQuiz
+    events:
+      - http:
+          path: /courseSectionQuiz
+          method: GET
+          cors: true
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-event-body-option
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+    websocketPort: 4001
+    lambdaPort: 4002
