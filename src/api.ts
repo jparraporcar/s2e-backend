@@ -1,6 +1,6 @@
 import { APIGatewayEvent, Context } from 'aws-lambda'
 import axios from 'axios'
-import envVars from './env'
+import envVars from '../env'
 import { Configuration, OpenAIApi } from 'openai'
 
 const configuration = new Configuration({
