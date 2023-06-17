@@ -21,25 +21,37 @@ Before you begin, ensure you have met the following requirements:
 - You have installed the [Serverless framework](https://www.serverless.com/framework/docs/getting-started/)
 - You have installed the [AWS CLI](https://aws.amazon.com/cli/)
 - You have an AWS account with appropriate access rights
+- You have an API key from Openai [Openai](https://openai.com/)
 
 ## Installation
 
-To install s2e-backend, follow these steps:
-1. Clone the repository:
-```
-git clone https://github.com/yourusername/s2e-backend.git
-```
+### Installing
+    To install s2e-backend, follow these steps:
+    1. Clone the repository:
+    ```
+    git clone https://github.com/yourusername/s2e-backend.git
+    ```
 
-2. Navigate into the project directory:
+    2. Navigate into the project directory:
 
-```
-cd s2e-backend
-```
-3. Install the dependencies:
+    ```
+    cd s2e-backend
+    ```
+    3. Install the dependencies:
 
-```
-npm install
-```
+    ```
+    npm install
+    ```
+    4. Define enviromental variables in a env.ts file in the root directory, as below:
+
+    ```
+    export const envVars = {
+        STAGE: 'xxx',
+        AWS_DEFAULT_REGION: 'xxx',
+        OPENAI_API_KEY: 'xxx',
+        ...process.env,
+    }
+    ```
 
 ## Deployment
 
