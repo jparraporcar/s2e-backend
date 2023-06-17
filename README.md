@@ -12,13 +12,14 @@
 
 ## Description
 
-This is the backend service for the s2e (studyToEvolve) mobile application. It's built with serverless architecture on AWS, utilizing services like AWS Lambda, API Gateway, and more to handle requests from the frontend application.
+This is the backend service for the s2e (StudyToEvolve) mobile application. It's built with serverless architecture on AWS, utilizing services like AWS Lambda, API Gateway, and more to handle requests from the frontend application.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 - You have installed the latest version of [Node.js and npm](https://nodejs.org/)
 - You have installed the [Serverless framework](https://www.serverless.com/framework/docs/getting-started/)
+- You have installed the [AWS CLI](https://aws.amazon.com/cli/)
 - You have an AWS account with appropriate access rights
 
 ## Installation
@@ -82,11 +83,6 @@ The `s2e-backend` utilizes various technologies and packages for its implementat
 
 6. **Serverless Framework** - An open-source deployment framework that allows developers to build and deploy auto-scaling, pay-per-execution, event-driven functions.
 
-Development dependencies include:
-
-- **ESLint** and **Prettier** for enforcing code style and formatting rules.
-- **ts-node** for executing TypeScript code directly.
-- **serverless-event-body-option** and **serverless-offline** for enhancing the Serverless Framework development experience.
 
 ## Contact
 
