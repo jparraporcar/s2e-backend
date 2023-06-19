@@ -18,37 +18,37 @@ This repository and its contents, including installation and deployment instruct
 
 ## Description
 
-This is the backend service for the s2e (StudyToEvolve) mobile application. It's built with serverless architecture on AWS, utilizing services like AWS Lambda, API Gateway, and more to handle requests from the frontend application.
+The backend service for the s2e (StudyToEvolve) mobile application is presented [jparraporcar/s2e](https://github.com/jparraporcar/s2e).
 
 ## Prerequisites
 
-Before you begin, ensure you have met the following requirements:
-- You have installed the latest version of [Node.js and npm](https://nodejs.org/)
-- You have installed the [Serverless framework](https://www.serverless.com/framework/docs/getting-started/)
-- You have installed the [AWS CLI](https://aws.amazon.com/cli/)
-- You have an AWS account with appropriate access rights
-- You have an API key from Openai [Openai](https://openai.com/)
+Before starting, the following requirements are satisfied:
+- The latest version of [Node.js and npm](https://nodejs.org/) is installed.
+- The [Serverless framework](https://www.serverless.com/framework/docs/getting-started/) is installed.
+- The [AWS CLI](https://aws.amazon.com/cli/) is installed.
+- An AWS account with appropriate access rights is available.
+- An API key from [Openai](https://openai.com/) is secured.
 
 ## Installation
 
-### Installing
-    To install s2e-backend, follow these steps:
-    1. Clone the repository:
+### Procedure
+    For the installation of s2e-backend, these steps are followed:
+    1. The repository is cloned:
     ```
     git clone https://github.com/yourusername/s2e-backend.git
     ```
 
-    2. Navigate into the project directory:
+    2. The project directory is accessed:
 
     ```
     cd s2e-backend
     ```
-    3. Install the dependencies:
+    3. The dependencies are installed:
 
     ```
     npm install
     ```
-    4. Define enviromental variables in a env.ts file in the root directory, as below:
+    4. Environmental variables are defined in a env.ts file in the root directory, as shown below:
 
     ```
     export const envVars = {
@@ -61,46 +61,45 @@ Before you begin, ensure you have met the following requirements:
 
 ## Deployment
 
-To deploy the backend, run the following command:
+For the backend deployment, the following command is executed:
 
 ```
 serverless deploy
 ```
 
-After the deployment, you will receive the API endpoints, which can be used in the s2e frontend application.
+After deployment, the API endpoints are provided.
 
+## API endpoints
 
-## APIs
+The `s2e-backend` consists of two primary AWS Lambda functions enabling the necessary interactions with the OpenAI API:
 
-The `s2e-backend` contains two main AWS Lambda functions that handle the necessary calls to the OpenAI API:
+1. **Get Course Index** - This function creates a course index based on user input from the frontend. A request is dispatched to the OpenAI API with relevant parameters. This Lambda function is invoked by a GET request at the `https://../indexCourse` endpoint obtained from deployment.
 
-1. **Get Course Index** - This function generates a course index based on the user input provided from the frontend. This is facilitated by sending a request to the OpenAI API with the appropriate parameters. This Lambda function is triggered by a GET request at the `/indexCourse` endpoint.
+2. **Get Quiz Section** - This function fetches a quiz for a specific course section. A request is sent to the OpenAI API, and a quiz is constructed and returned based on the response. This Lambda function is triggered by a GET request at the `http://.../courseSectionQuiz` endpoint obtained from the deployment.
 
-2. **Get Quiz Section** - This function retrieves a quiz for a specific course section. It makes a request to the OpenAI API, then constructs and returns a quiz based on the response. This Lambda function is triggered by a GET request at the `/courseSectionQuiz` endpoint
-
+These 2 endpoints are to be used in the frontend code repo.
 
 ## Architecture
 
-This architecture is designed around the Serverless framework, using AWS Lambda functions for computation, Amazon API Gateway for HTTP request handling, and AWS CloudWatch for logging.
+It leverages serverless architecture on AWS, employing services like AWS Lambda, API Gateway, and more to manage requests from the frontend application.
 
 ![Infrastructure Diagram](./diagram.jpg)
 
 ## Technologies
 
-The `s2e-backend` utilizes various technologies and packages for its implementation:
+Various technologies and packages contribute to the implementation of the `s2e-backend`:
 
-1. **Node.js** - An open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a web browser.
+1. **Node.js** - An open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.
 
-2. **TypeScript** - An open-source language that builds on JavaScript by adding static type definitions. This project was built using TypeScript version 4.9.5.
+2. **TypeScript** - An open-source language that builds on JavaScript by adding static type definitions. This project utilized TypeScript version 4.9.5.
 
-3. **AWS Lambda** - A serverless compute service that lets you run your code without provisioning or managing servers.
+3. **AWS Lambda** - A serverless compute service that enables code execution without the requirement for provisioning or managing servers.
 
-4. **Axios** - A promise-based HTTP client for the browser and Node.js. Axios makes it easy to send asynchronous HTTP requests.
+4. **Axios** - A promise-based HTTP client for the browser and Node.js, making it simple to send asynchronous HTTP requests.
 
-5. **OpenAI API** - Used to interact with the OpenAI GPT-3.5 model for course index generation and quiz creation.
+5. **OpenAI API** - It interfaces with the OpenAI GPT-3.5 model for course index generation and quiz creation.
 
-6. **Serverless Framework** - An open-source deployment framework that allows developers to build and deploy auto-scaling, pay-per-execution, event-driven functions.
-
+6. **Serverless Framework** - An open-source deployment framework allowing developers to construct and deploy auto-scaling, pay-per-execution, event-driven functions.
 
 ## Contact
 
