@@ -48,7 +48,7 @@ Before starting, the following requirements are satisfied:
     ```
     npm install
     ```
-    4. Environmental variables are defined in a env.ts file in the root directory, as shown below:
+    4. Environment variables are to be defined in a env.ts file in the root directory, as shown below:
 
     ```
     export const envVars = {

@@ -1,12 +1,11 @@
 import { APIGatewayEvent, Context } from 'aws-lambda'
 import axios from 'axios'
-import envVars from '../env'
-import { Configuration, OpenAIApi } from 'openai'
+import { envVars } from "../env"
+import OpenAI from 'openai';
 
-const configuration = new Configuration({
-    apiKey: envVars.OPENAI_API_KEY,
-})
-const openai = new OpenAIApi(configuration)
+const openai = new OpenAI({
+  apiKey: envVars.OPENAI_API_KEY 
+});
 
 const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
@@ -18,7 +17,7 @@ module.exports.indexCourse = async (
     context: Context
 ) => {
     const query = event.queryStringParameters! //TODO: create the validation logic
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
         model: `${query.modelType}`,
         messages: [
             {
@@ -29,12 +28,12 @@ module.exports.indexCourse = async (
         temperature: 0,
     })
 
-    console.log(completion.data.choices[0].message?.content)
+    console.log(completion.choices[0].message?.content)
 
     return {
         statusCode: 200,
         headers: corsHeaders,
-        body: JSON.stringify(completion.data.choices[0].message),
+        body: JSON.stringify(completion.choices[0].message),
     }
 }
 
@@ -43,7 +42,7 @@ module.exports.courseSectionQuiz = async (
     context: Context
 ) => {
     const query = event.queryStringParameters! //TODO: create the validation logic
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
         model: `${query.modelType}`,
         messages: [
             {
@@ -83,6 +82,6 @@ module.exports.courseSectionQuiz = async (
     return {
         statusCode: 200,
         headers: corsHeaders,
-        body: JSON.stringify(completion.data.choices[0].message),
+        body: JSON.stringify(completion.choices[0].message),
     }
 }
